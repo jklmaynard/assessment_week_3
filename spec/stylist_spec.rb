@@ -46,6 +46,28 @@ describe(Stylist) do
     end
   end
 
+  describe("#delete") do
+    it("deletes stylist from the database") do
+      stylist1 = Stylist.new({ :name => "Joe Sammy", :id => nil })
+      stylist1.save()
+      stylist2 = Stylist.new({ :name => "Barbara Bernstein", :id => nil })
+      stylist2.save()
+      stylist1.delete()
+      expect(Stylist.all()).to eq([stylist2])
+    end
+
+    it("deletes a stylist's clients from the database") do
+      stylist1 = Stylist.new({ :name => "Joe Sammy", :id => nil })
+      stylist1.save()
+      client1 = Client.new({ :name => "Martha Jones", :stylist_id => stylist1.id() })
+      client1.save()
+      client2 = Client.new({ :name => "Donna Noble", :stylist_id => stylist1.id() })
+      client2.save()
+      stylist1.delete()
+      expect(Client.all()).to eq([])
+    end
+  end
+
   describe(".find") do
     it("returns the stylist by an ID number") do
       stylist1 = Stylist.new({ :name => "Barbara", :id => nil })
