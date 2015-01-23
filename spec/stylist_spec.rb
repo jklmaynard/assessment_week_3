@@ -1,0 +1,43 @@
+require('spec_buddy')
+
+describe(Stylist) do
+
+  describe("#name") do
+    it("returns the name of a stylist") do
+      stylist1 = Stylist.new({ :name => "Barbara", :id => nil })
+      expect(stylist1.name()).to eq("Barbara")
+    end
+  end
+
+  describe("#id") do
+    it("returns the id of the stylist") do
+      stylist1 = Stylist.new({ :name => "Barbara", :id => nil })
+      stylist1.save()
+      expect(stylist1.id()).to be_an_instance_of(Fixnum)
+    end
+  end
+
+  describe("#save") do
+    it("saves a stylist into an array") do
+      stylist1 = Stylist.new({ :name => "Barbara", :id => nil })
+      stylist1.save()
+      expect(Stylist.all()).to eq([stylist1])
+    end
+  end
+
+  describe("#==") do
+    it("identifies when two stylists are the same") do
+      stylist1 = Stylist.new({ :name => "Barbara", :id => nil })
+      stylist1.save()
+      stylist2 = Stylist.new({ :name => "Barbara", :id => nil })
+      expect(stylist1).to eq(stylist2)
+    end
+  end
+
+  describe(".all") do
+    it("is empty at first") do
+      expect(Stylist.all()).to eq([])
+    end
+  end
+
+end
