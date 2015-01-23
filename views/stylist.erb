@@ -13,5 +13,11 @@
   <h3>There are no clients yet!</h3>
 
 <% end %>
+<br>
+<form action="/stylists/<%= @stylist.id() %>" method="post">
+  <input name="_method" type="hidden" value="delete">
 
+  <button type="submit">Terminate Stylist</button>
+</form>
+<br>
 <a href="/">Back to Home Page</a>
