@@ -39,5 +39,5 @@ DB = PG.connect({ :dbname => "salon" })
     client = Client.new({ :name => name, :stylist_id => stylist_id })
     client.save()
     @stylist = Stylist.find(stylist_id)
-    erb(:index)
+    erb(:stylist)
   end
