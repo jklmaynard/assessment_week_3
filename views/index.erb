@@ -1,0 +1,24 @@
+<h1>The Curl up and Dye Hair Salon</h1>
+<h2>Brought to you by Carrie Fisher</h2>
+
+<h3>Add or Select a Stylist</h3>
+
+<form action="/stylists" method="post">
+  <label for="stylist_name">Stylist Name:</label>
+  <input id="stylist_name" name="stylist_name" type="text">
+
+  <button type="Submit">Add Stylist!</button>
+</form>
+
+<% if @stylists.any?() %>
+<p>Click on a Stylist to See Their Clients:</p>
+
+  <ul>
+    <% @stylists.each do |stylist| %>
+    <li><a href="stylists/<%= stylist.id() %>"<%= stylist.name() %></a></li>
+    <% end %>
+  </ul>
+
+  <% else %>
+  <p>There are no Stylists Added Yet!</p>
+<% end %>
