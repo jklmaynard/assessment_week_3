@@ -15,10 +15,13 @@
 
   <ul>
     <% @stylists.each do |stylist| %>
-    <li><a href="stylists/<%= stylist.id() %>"<%= stylist.name() %></a></li>
+    <li><%= stylist.name() %></li>
     <% end %>
   </ul>
 
   <% else %>
   <p>There are no Stylists Added Yet!</p>
 <% end %>
+
+
+<!-- <a href="stylists/<%= stylist.id() %>" -->
