@@ -1,10 +1,9 @@
 class Client
 
-  attr_reader(:name, :id)
+  attr_reader(:name)
 
   define_method(:initialize) do |attributes|
     @name = attributes.fetch(:name)
-    @id = attributes.fetch(:id)
   end
 
   define_method(:save) do
