@@ -33,6 +33,19 @@ describe(Client) do
     end
   end
 
+  describe("#delete") do
+    it("deletes an object from the array of clients for a particular stylist") do
+      stylist1 = Stylist.new({ :name => "Joe Sammy", :id => nil })
+      stylist1.save()
+      client1 = Client.new({ :name => "Martha Jones", :stylist_id => stylist1.id() })
+      client1.save()
+      client2 = Client.new({ :name => "Donna Noble", :stylist_id => stylist1.id() })
+      client2.save()
+      client1.delete()
+      expect(stylist1.clients()).to eq([client2])
+    end
+  end
+
   describe(".all") do
     it("is empty at first") do
       expect(Client.all()).to eq([])
