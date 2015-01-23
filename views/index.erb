@@ -1,7 +1,6 @@
 <h1>The Curl up and Dye Hair Salon</h1>
-<h2>Brought to you by Carrie Fisher</h2>
 
-<p>Add a Stylist</p>
+<h3>Add a Stylist</h3>
 
 <form action="/stylists" method="post">
   <label for="stylist_name">Stylist Name:</label>
@@ -11,21 +10,20 @@
 </form>
 
 <% if @stylists.any?() %>
-<p>Click on a Stylist to See Their Clients:</p>
-
+<h3>Click on a Name to See a Stylist's Clients</h3>
   <ul>
     <% @stylists.each do |stylist| %>
     <li><a href="stylists/<%= stylist.id() %>"><%= stylist.name() %></a></li>
     <% end %>
   </ul>
-
   <% else %>
   <p>There are no Stylists Added Yet!</p>
 <% end %>
 
-<p>Add a Client to any Stylist</p>
+<h3>Add a Client to any Stylist</h3>
 
 <form action="/clients" method="post">
+  <label for="stylist_id">Select a Stylist</label><br>
   <select id="stylist_id" name="stylist_id" type="text">
     <% @stylists.each() do |stylist| %>
     <option value="<%= stylist.id() %>"> <%= stylist.name() %></option>
@@ -33,6 +31,5 @@
   </select><br>
   <label for="name">Insert the name of your victim, er!, client!</label><br>
   <input id="name" name="name" type="text">
-
   <button type="submit">Add A Client</button>
 </form>
